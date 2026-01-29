@@ -40,7 +40,7 @@ A Progressive Web App (PWA) that enables users to create time-locked encrypted m
 
 ## Quick Start
 
-Visit the live app: [your-github-pages-url]
+Visit the live app: []
 
 Or run locally:
 ```bash

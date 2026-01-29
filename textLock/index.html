@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextLock - Time-Locked Encryption</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f0f11">
+    <link rel="shortcut icon" href="icons/textlock.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0f0f11;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            overflow: hidden;
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                background: #fafafa;
+            }
+        }
+
+        .loader-container {
+            text-align: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .lock-icon {
+            width: 48px;
+            height: 48px;
+            position: relative;
+            margin: 0 auto 1.5rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .lock-icon::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 65%;
+            border: 3px solid #5a9ff7;
+            border-radius: 6px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .lock-icon::after {
+            content: "";
+            position: absolute;
+            top: -35%;
+            left: 50%;
+            width: 70%;
+            height: 70%;
+            transform: translateX(-50%);
+            border: 3px solid #5a9ff7;
+            border-bottom: none;
+            border-radius: 24px 24px 0 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .lock-icon::before,
+            .lock-icon::after {
+                border-color: #2d8cf0;
+            }
+        }
+
+        .loader-text {
+            color: #e8e8e8;
+            font-size: 1.125rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .loader-text {
+                color: #1a1a1a;
+            }
+        }
+
+        .loader-subtext {
+            color: #888888;
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .loader-subtext {
+                color: #7a7a7a;
+            }
+        }
+
+        .dots {
+            display: inline-block;
+        }
+
+        .dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes dots {
+            0%, 20% {
+                content: '';
+            }
+            40% {
+                content: '.';
+            }
+            60% {
+                content: '..';
+            }
+            80%, 100% {
+                content: '...';
+            }
+        }
+
+        /* Spinner animation */
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(90, 159, 247, 0.1);
+            border-top-color: #5a9ff7;
+            border-radius: 50%;
+            margin: 1.5rem auto 0;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .spinner {
+                border: 3px solid rgba(45, 140, 240, 0.1);
+                border-top-color: #2d8cf0;
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="lock-icon"></div>
+        <div class="loader-text">TextLock</div>
+        <div class="loader-subtext">Preparing secure workspace<span class="dots"></span></div>
+        <div class="spinner"></div>
+    </div>
+    <script>
+        // Check if app is running in standalone mode
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches 
+                          || window.navigator.standalone 
+                          || document.referrer.includes('android-app://');
+        
+        // Check if user has visited before
+        const hasInstalledBefore = localStorage.getItem('textlock-installed') === 'true';
+        
+        // Getting the current path
+        const currentPath = window.location.pathname;
+        const baseUrl = window.location.origin + currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+        
+        if (isStandalone || hasInstalledBefore) {
+            // User has installed the app, go directly to app
+            window.location.replace(baseUrl + 'app.html');
+        } else {
+            // First time visitor, show landing page
+            window.location.replace(baseUrl + 'landing.html');
+        }
+    </script>
+</body>
+</html>

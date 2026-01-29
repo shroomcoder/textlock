@@ -40,7 +40,7 @@ A Progressive Web App (PWA) that enables users to create time-locked encrypted m
 
 ## Quick Start
 
-Visit the live app: https://shroomcoder.github.io/textlock/landing.html
+Visit the live app: https://shroomcoder.github.io/textlock/
 
 Or run locally:
 ```bash

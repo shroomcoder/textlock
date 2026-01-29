@@ -348,6 +348,6 @@ SOFTWARE.
 
 ⭐ Star this repo if you find it useful!
 
-[🔒 Try TextLock](https://shroomcoder.github.io/textlock) | [📖 Documentation](https://github.com/shroomcoder/textlock/wiki) | [🐛 Report Bug](https://github.com/shroomcoder/textlock/issues)
+[🔒 Try TextLock](https://shroomcoder.github.io/textlock) | [🐛 Report Bug](https://github.com/shroomcoder/textlock/issues)
 
 </div>

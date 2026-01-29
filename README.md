@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![TextLock QR Code](screenshots/qr-code.png)
+<img src="screenshots/qr-code.png" width="200" alt="TextLock QR Code"/>
 
 **Time-locked encryption for your secrets. Write now, reveal later.**
 
@@ -10,7 +10,7 @@
 [![PWA](https://img.shields.io/badge/PWA-enabled-brightgreen.svg)](https://web.dev/progressive-web-apps/)
 [![Security](https://img.shields.io/badge/Encryption-AES--256--GCM-red.svg)](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)
 
-[Live Demo](https://shroomcoder.github.io/textlock) • [Report Bug](https://github.com/shroomcoder/textlock/issues) • [Request Feature](https://github.com/shroomcoder/textlock/issues)
+[Live Demo](https://your-username.github.io/textlock) • [Report Bug](https://github.com/your-username/textlock/issues) • [Request Feature](https://github.com/your-username/textlock/issues)
 
 </div>
 
